@@ -26,6 +26,8 @@ encoded_data = "the base64 string to be decoded"
 print(decode_base64(encoded_data))
 ```
 
+---
+
 ## javascript base64 编码
 
 ```javascript
@@ -41,6 +43,8 @@ let encodedData = "the base64 string to be decoded";
 let decodedData = atob(encodedData);
 console.log(decodedData);
 ```
+
+---
 
 ## php base64 编码
 
