@@ -4,7 +4,12 @@
 
 ### 2023.0
 
-[01.你能看到这个文件嘛？](practice/2023.0/01.md)
+#### WEB
+
+- [01.你能看到这个文件嘛？](practice/2023.0/WEB/01.md)  
+- [04.you are not admin](practice/2023.0/WEB/04.md)
+
+---
 
 ## 杂项
 
