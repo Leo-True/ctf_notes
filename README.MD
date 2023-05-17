@@ -18,9 +18,11 @@
 
 - [01.0和1](practice/2023.0/cryptography/01.md)
 - [03.有点弱的通讯](practice/2023.0/cryptography/03.md)
+- [04.最简单的摩斯码](practice/2023.0/cryptography/04.md)
 
 ---
 
 ## 杂项
 
-- [base64 编解码](misc/base64.md)
+- [base64编解码](misc/base64.md)
+- [摩斯密码解码](misc/morse.md)
