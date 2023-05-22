@@ -31,10 +31,12 @@
 - [04.能找到密码嘛](practice/2023.0/misc/04.md)
 - [05.TLENET数据包](practice/2023.0/misc/05.md)
 - [06.这么多文件，怎么处理](practice/2023.0/misc/06.md)
+- [07.被转码的图片](practice/2023.0/misc/07.md)
 
 ---
 
 ## 杂项
 
 - [base64编解码](misc/base64.md)
+- [辨识base32编码](misc/base32.md)
 - [摩斯密码解码](misc/morse.md)
