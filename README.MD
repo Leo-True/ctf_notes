@@ -41,6 +41,12 @@
 
 ---
 
+#### 隐写术
+
+- [01.图片隐写一](practice/2023.0/steganography/01.md)
+
+---
+
 ## 杂项
 
 - [base64编解码](misc/base64.md)
