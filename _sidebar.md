@@ -4,6 +4,7 @@
 - [密码学](/practice/2023.0/cryptography/)
 - [安全杂项](/practice/2023.0/misc/)
 - [逆向工程](/practice/2023.0/reverse/)
+- [隐写术](/practice/2023.0/steganography/)
 
 **[2023.1 练习题](/practice/2023.1/)**
 

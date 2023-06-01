@@ -27,11 +27,12 @@
 #### 安全杂项
 
 - [01.ping通ping不通](/practice/2023.0/misc/01.md)
-- [03.USB数据包](/practice/2023.0/misc/03.md)
-- [04.能找到密码嘛](/practice/2023.0/misc/04.md)
-- [05.TLENET数据包](/practice/2023.0/misc/05.md)
-- [06.这么多文件，怎么处理](/practice/2023.0/misc/06.md)
-- [07.被转码的图片](/practice/2023.0/misc/07.md)
+- [03.USB数据包](practice/2023.0/misc/03.md)
+- [04.能找到密码嘛](practice/2023.0/misc/04.md)
+- [05.TLENET数据包](practice/2023.0/misc/05.md)
+- [06.这么多文件，怎么处理](practice/2023.0/misc/06.md)
+- [07.被转码的图片](practice/2023.0/misc/07.md)
+- [11.画图，你会么](practice/2023.0/misc/11.md)
 
 ---
 
@@ -44,6 +45,12 @@
 ### 2023.1
 
 - [001.find the flag](/practice/2023.1/001.md)
+
+---
+
+#### 隐写术
+
+- [01.图片隐写一](practice/2023.0/steganography/01.md)
 
 ---
 
