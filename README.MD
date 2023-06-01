@@ -42,15 +42,15 @@
 
 ---
 
-### 2023.1
-
-- [001.find the flag](/practice/2023.1/001.md)
-
----
-
 #### 隐写术
 
 - [01.图片隐写一](practice/2023.0/steganography/01.md)
+
+---
+
+### 2023.1
+
+- [001.find the flag](/practice/2023.1/001.md)
 
 ---
 
