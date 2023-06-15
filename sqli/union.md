@@ -65,7 +65,7 @@ SQL注入漏洞源自于程序员在应用开发时，通过 **拼接** 的方�
 
 ### 把多个表列的信息合并为一列显示
 
-`' UNION SELECT CONCAT(username, password) FROM users-- `
+`' UNION SELECT CONCAT(username, '~', password) FROM users-- `
 
 | 数据库               | 拼接语法               |
 |---------------------|-----------------------|
