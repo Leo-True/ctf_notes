@@ -39,6 +39,7 @@
 #### 逆向工程
 
 - [01.记忆中的贪吃蛇](/practice/2023.0/reverse/01.md)
+- [02.过于简单的异或算法](/practice/2023.0/reverse/02.md)
 
 ---
 
@@ -59,5 +60,6 @@
 - [base64编解码](/misc/base64.md)
 - [辨识base32编码](/misc/base32.md)
 - [摩斯密码解码](/misc/morse.md)
+- [栅栏密码解密](/misc/rail_fence.md)
 - [WiFi WPA四路握手及密码破解](/misc/wifi.md)
 - [SQL注入](/misc/sqli.md)
