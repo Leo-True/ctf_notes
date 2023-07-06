@@ -4,7 +4,9 @@
 
 ### 条件
 
-假设 p、q 二进制位数相同，如果p为`512`位，则p需已知约`288`位。如果p为`1024`位，则p需已知约`576`位。
+1. 若p,q为`1024`位，当p或q缺失位数 `<= 454` 位时，可以通过coppersmith方法恢复p或q。
+2. 若p,q为 `512`位，当p或q缺失位数 `<= 224` 位时，可以通过coppersmith方法恢复p或q。
+3. 表达式 pk = n * inverse_mod(q % (2^k), 2^k) % 2^k ，实际上是求出**p的低k位**
 
 ### sage 脚本
 
@@ -12,7 +14,7 @@
 # 已知p高位，恢复p
 def ph(n, p_high, p_missing_len):
     PR.<x> = PolynomialRing(Zmod(n))
-    f = (p_high << p_missing_len) + x    
+    f = (p_high << p_missing_len) + x
     roots = f.small_roots(X = 1<<p_missing_len, beta = 0.4)
     if roots:
         return int(f(roots[0]))
