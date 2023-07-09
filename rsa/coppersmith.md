@@ -34,14 +34,14 @@ def phl(n, p_high, p_low, p_low_len, p_missing_len):
 # 已知p高位p_high和低位p_low，恢复p，缺失位数过多则穷举
 def recover_p(n, p_high, p_low, p_low_len, p_missing_len, p_len = 1024):
     # 定义一个函数，处理p_high的扩展和恢复
-    def recover_with_extension(p_high, p_missing_len, MAX_MISSING_LEN):
+    def recover_with_extension():
         p_high_extended_bits = p_missing_len - MAX_MISSING_LEN
         p_high_extended = p_high << p_high_extended_bits                
         for _ in range(1 << p_high_extended_bits):
             p = phl(n, p_high_extended, p_low, p_low_len, MAX_MISSING_LEN)
             if p != 0:
                 return p            
-            p_high += 1
+            p_high_extended += 1
         return 0
 
     # 验证p_len的值，只处理1024和512两种情况
@@ -56,7 +56,7 @@ def recover_p(n, p_high, p_low, p_low_len, p_missing_len, p_len = 1024):
         return phl(n, p_high, p_low, p_low_len, p_missing_len)
     # 否则，进行p_high的扩展和恢复
     else:
-        return recover_with_extension(p_high, p_missing_len, MAX_MISSING_LEN)
+        return recover_with_extension()
 
 ```
 
