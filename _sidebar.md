@@ -1,3 +1,9 @@
+**密码学**
+
+- [强网杯2019-CopperStudy](/rsa/copperstudy/copperstudy.md)
+
+[**杂项**](/misc/)
+
 **2023.0 练习题**
 
 - [WEB](/practice/2023.0/web/)
@@ -6,6 +12,4 @@
 - [逆向工程](/practice/2023.0/reverse/)
 - [隐写术](/practice/2023.0/steganography/)
 
-**[2023.1 练习题](/practice/2023.1/)**
-
-**[杂项](/misc/)**
+[**2023.1 练习题**](/practice/2023.1/)
