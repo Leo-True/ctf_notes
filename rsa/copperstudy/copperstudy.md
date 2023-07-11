@@ -9,7 +9,7 @@
 > [+] skr[0:5].encode('hex')=497625a6d2  
 > [-] skr.encode('hex')=  
 
-### 求解
+### 题解
 
 `skr`为`8`个字节，已经知道`5`个字节，只需要对未知的`3`个字节的值试错穷举即可。
 
@@ -51,7 +51,7 @@ print(result.hex())
 > [+] ((m>>72)<<72) =0x6696af2b1064c860a38acab284af83d0659c8a6f7aca6e147ecb5874a47108074608c619b5f001b03558da7e0c4546e3c8318ef70e2878000000000000000000L  
 > [-] long_to_bytes(m).encode('hex')=  
 
-### 求解
+### 题解
 
 明文`m`缺失`72`位，`e`的值很小，可以恢复明文`m`。
 
@@ -105,7 +105,7 @@ if m:
 > [+] ((p>>128)<<128)=0x1d59aab5e6eb96bffb7929c06715855cf2072f523ddb8efadc57d2707638a87ab3c68304b9aadd1b2fa897628eb73ea100000000000000000000000000000000L  
 > [-] long_to_bytes(m).encode('hex')=  
 
-### 求解
+### 题解
 
 素数因子`p`缺失`128`位，可以恢复`p`，求出私钥因子`d`，再对密文`c`解密即可。
 
@@ -191,7 +191,7 @@ if p!=0:
 > [+] d&((1<<512)-1)=0xc1e99958fb6b655de9ffc67a36acd32e767deda4c2afa68f620a7bc85516c937848443636c4bd1f747e3140d74d74a001f114e3d5ab52b7cd32ae49563d52cabL  
 > [-] long_to_bytes(m).encode('hex')=  
 
-### 求解
+### 题解
 
 已知私钥因子`d`的`低512位`，且`e`很小。
 ed = 1 mod (p-1)(q-1) =>  
@@ -305,7 +305,7 @@ print(hex(m))
 > [+] c3=pow(m,e,n3)=0x480830044351b6d4f86b9968e56a5a3b18b1f966851229f3a500f870d8a3ad364944c18701d67cf02f876a5ec353935ee4d3d7e313f0db0867da70a40458577764540ef60446c7a71577598498b89f2d706013936c9eb9b0f730a27d197dc64370a1e772fcca8ae59a56a0de0dbcbd0d92228df2efd3fb64dcf87a27e842c1eL  
 > [-] long_to_bytes(m).encode('hex')=  
 
-### 求解
+### 题解
 
 这里用同一个`e`，不同的`n`，对同一则明文进行了加密，且`e`的值较小。
 
@@ -361,6 +361,8 @@ if are_all_coprime([n1, n2, n3]):
 
 > f41982eb32ff1cac23d5f9db26a5671aeca57c9b3f40465a1ec5b825aa699e0a9b5cc09d167de63f90c50ca55f79e4dc20c574aefeb2bbe076c4f3b91715849b
 
+---
+
 ## 0x05 Challenge5 Franklin-Reiter 相关消息攻击
 
 ### 题目
@@ -377,6 +379,82 @@ if are_all_coprime([n1, n2, n3]):
 `e=3`，被同样的密钥加密的两则`明文线性相关`(m, m+1)，适用 `Franklin-Reiter 相关消息攻击`。
 
 ```python
+from sage.all import *
+
+def franklin_reiter_attack(e, n, c1, c2, a, b):
+    """
+    实现对 RSA 的 Franklin-Reiter 相关消息攻击。
+
+    参数:
+    
+    e (int): 公钥指数
+    
+    n (int): 模数
+
+    c1 (int): 第一条消息的 RSA 加密值
+
+    c2 (int): 第二条消息的 RSA 加密值
+
+    a (int): m2 = a*m1 + b 中的系数 a
+
+    b (int): m2 = a*m1 + b 中的系数 b
+
+    返回:
+
+    int: 第一条原始消息
+    """
+
+    x = PolynomialRing(ZZ.quo(n*ZZ), 'x').gen()
+    f1 = x**e - c1
+    f2 = (a*x+b)**e - c2
+
+    a = f2
+    b = f1
+    rp = 0
+    while True:
+        r = a % b
+        if r == 0:
+            c = rp.coefficients()
+            m1 = -pow(c[1], -1, n) * c[0]
+            return m1
+
+        rp = r
+        a, b = b, r
+ 
+
+n=0x22...
+e=3
+c1=0x19...
+c2=0x20...
+
+a=1
+b=1
+
+m1 = franklin_reiter_attack(e, n, c1, c2, 1, 1)
+if m1 is not None:
+    print(hex(m1))
 ```
 
 ### 答案
+
+> b4c2daf34f0eec971c54056932adaecf648851d4e56cdf5ab8ba8cdece730234d524923eed43cc4cd0956d742ee01bb06166e1abebe37c1cf01a58125327e4d7
+
+---
+
+## 0x06 Challenge6
+
+### 题目
+
+> [+] n=0xbadd260d14ea665b62e7d2e634f20a6382ac369cd44017305b69cf3a2694667ee651acded7085e0757d169b090f29f3f86fec255746674ffa8a6a3e1c9e1861003eb39f82cf74d84cc18e345f60865f998b33fc182a1a4ffa71f5ae48a1b5cb4c5f154b0997dc9b001e441815ce59c6c825f064fdca678858758dc2cebbc4d27L  
+> [+] d=random.getrandbits(1024*0.270)  
+> [+] e=invmod(d,phin)  
+> [+] hex(e)=0x11722b54dd6f3ad9ce81da6f6ecb0acaf2cbc3885841d08b32abc0672d1a7293f9856db8f9407dc05f6f373a2d9246752a7cc7b1b6923f1827adfaeefc811e6e5989cce9f00897cfc1fc57987cce4862b5343bc8e91ddf2bd9e23aea9316a69f28f407cfe324d546a7dde13eb0bd052f694aefe8ec0f5298800277dbab4a33bbL  
+> [+] m=random.getrandbits(512)  
+> [+] c=pow(m,e,n)=0xe3505f41ec936cf6bd8ae344bfec85746dc7d87a5943b3a7136482dd7b980f68f52c887585d1c7ca099310c4da2f70d4d5345d3641428797030177da6cc0d41e7b28d0abce694157c611697df8d0add3d900c00f778ac3428f341f47ecc4d868c6c5de0724b0c3403296d84f26736aa66f7905d498fa1862ca59e97f8f866cL  
+> [-] long_to_bytes(m).encode('hex')=  
+
+### 题解
+
+### 答案
+
+---
