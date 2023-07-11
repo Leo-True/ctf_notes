@@ -334,10 +334,12 @@ def are_all_coprime(numbers):
 
 若所有`n`两两互质，由：
 
-> c_1 = m^e mod n_1
-> c_2 = m^e mod n_2
-> ...
-> c_e = m^e mod n_e
+```
+c_1 = m^e mod n_1
+c_2 = m^e mod n_2
+...
+c_e = m^e mod n_e
+```
 
 根据中国剩余定理，可解出 `m^e` ，从而求得 `m`。
 
