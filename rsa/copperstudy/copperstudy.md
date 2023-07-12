@@ -42,7 +42,7 @@ print(result.hex())
 497625a6d2bfc327
 ```
 
-## 0x01 Challenge1 小指数e，已知部分m
+## 0x01 Challenge1 已知部分m
 
 ### 题目
 
@@ -185,7 +185,7 @@ if p!=0:
 d73f80417d7ee47efe2c521377cc0ec16d29352fb3a2b9b9e83a6fb1f28b1cd87bc04c9ce13822636c1b20b7a417557ea3bb0232d2ad24f1114b388279bef86e
 ```
 
-## 0x03 Challenge3 小指数e，已知部分d
+## 0x03 Challenge3 已知部分d
 
 ### 题目
 
@@ -299,7 +299,7 @@ print(hex(m))
 c9a90c63a308112ff26cdb492becc6504667b567aa10fd0eb7209391e06312fdff9f21bb5c2bd1dd85ceede33894ab8c0485253954106662e0835991f22878c8
 ```
 
-## 0x04 Challenge4 小指数e，同一明文多则密文，广播攻击
+## 0x04 Challenge4 广播攻击
 
 ### 题目
 
@@ -455,7 +455,7 @@ if m1 is not None:
 b4c2daf34f0eec971c54056932adaecf648851d4e56cdf5ab8ba8cdece730234d524923eed43cc4cd0956d742ee01bb06166e1abebe37c1cf01a58125327e4d7
 ```
 
-## 0x06 Challenge6
+## 0x06 Challenge6 Boneh and Durfee 攻击
 
 ### 题目
 
@@ -471,7 +471,7 @@ b4c2daf34f0eec971c54056932adaecf648851d4e56cdf5ab8ba8cdece730234d524923eed43cc4c
 
 ### 题解
 
-`e`的值较大，`d`的值较小，`d < n^0.270`，当 **d < n^0.292** 时，适用 **Boneh and Durfee 攻击** 。以下修改自来源于[网络](https://github.com/mimoo/RSA-and-LLL-attacks/blob/master/boneh_durfee.sage)的`sage`脚本。注意：**不是**python脚本！
+`e`的值较大，`d`的值较小，`d < n^0.270`。当 **d < n^0.292** 时，适用 **Boneh and Durfee 攻击** 。以下修改自来源于[网络](https://github.com/mimoo/RSA-and-LLL-attacks/blob/master/boneh_durfee.sage)的`sage`脚本。注意：**不是**python脚本！
 
 ```python
 import time
