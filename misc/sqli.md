@@ -4,7 +4,7 @@
 
 SQL注入漏洞源自于程序员在应用开发时，通过 **拼接** 的方式来生成SQL语句。考虑以下代码：
 
-> $sql = "SELECT title, description FROM books WHERE isbn = '" + $isbn + "' AND public = 1";
+> sql = "SELECT title, description FROM books WHERE isbn = '" + $isbn + "' AND public = 1";
 
 在“正常”情况下，程序员期待生成的SQL语句是类似这样的：
 
@@ -13,9 +13,9 @@ SQL注入漏洞源自于程序员在应用开发时，通过 **拼接** 的方�
 > WHERE isbn = '`123`'  
 > AND public = 1
 
-但如果变量`$isbn`受控，我们可以令：
+但如果变量`isbn`受控，我们可以令：
 
-> $isbn = "`' UNION SELECT username, password FROM users -- `";
+> isbn = "`' UNION SELECT username, password FROM users -- `";
 
 拼接后，SQL语句变为：
 
