@@ -1,5 +1,12 @@
 # linux 常用命令
 
+## 系统
+
+```bash
+# 修改密码
+passwd
+```
+
 ## 网络
 
 ```bash
@@ -15,6 +22,11 @@ ip r
 
 # 查看DNS服务器
 cat /etc/resolv.conf
+
+网络主机发现
+nmap -sP 192.168.3.0/24
+
+sudo nmap -sS 192.168.3.0/24
 ```
 
 ## 文件
