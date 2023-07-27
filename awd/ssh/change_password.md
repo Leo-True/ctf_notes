@@ -1,3 +1,24 @@
+# 批量修改主机ssh密码
+
+假设要修改的主机IP地址在文件`ip.txt`中，每行一个ip地址。这样的文件可以通过namp扫描生成，例：
+
+```bash
+# 端口扫描。假设ssh服务监听端口为22
+nmap -p 22 192.168.1.0/24 -oG - | awk '/open/{print $2}' > ip.txt
+
+# 半开扫描，可能更快，需sudo
+sudo nmap -sS -p 22 192.168.1.0/24 -oG - | awk '/open/{print $2}' > ip.txt
+```
+
+如果需要列出所登录主机监听的端口，可使用如下命令：
+
+```bash
+netstat -tuln
+```
+
+批量修改主机ssh密码脚本，用户名、密码、并发线程数、超时值等请根据实际需要修改：
+
+```python
 import paramiko
 import concurrent.futures
 import time
@@ -55,3 +76,5 @@ with concurrent.futures.ThreadPoolExecutor(max_workers=50) as executor:
     # 扫描 IP 地址
     for ip in ip_list:
         executor.submit(change_password, ip)
+
+```

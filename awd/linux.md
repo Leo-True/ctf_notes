@@ -1,4 +1,4 @@
-# linux 常用命令
+# linux常用命令
 
 ## 系统
 
@@ -23,10 +23,17 @@ ip r
 # 查看DNS服务器
 cat /etc/resolv.conf
 
-网络主机发现
+# 列出处于监听状态的端口
+netstat -tuln
+
+# 网络主机发现
 nmap -sP 192.168.3.0/24
 
 sudo nmap -sS 192.168.3.0/24
+
+nmap -p 22 192.168.1.0/24 -oG - | awk '/open/{print $2}' > ip.txt
+
+nmap -sS -p 22 192.168.1.0/24 -oG - | awk '/open/{print $2}' > ip.txt
 ```
 
 ## 文件
