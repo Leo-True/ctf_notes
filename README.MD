@@ -1,5 +1,9 @@
 # CTF笔记
 
+## 靶机练习
+
+- [01.Cat](/practice/box/note1.md)
+
 ## AWD
 
 - [linux常用命令](/awd/linux.md)
